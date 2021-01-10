@@ -1,5 +1,6 @@
 plugins {
     application
+    id("com.github.sherter.google-java-format") version "0.8"
 }
 
 repositories {
