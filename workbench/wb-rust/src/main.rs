@@ -1,6 +1,7 @@
 use std::io;
 use std::process;
 
+// 2^31 - 1 = 2147483647
 fn solve(a: u64, b: u64) -> u64 {
     let a_odds = (a + 1) / 2;
     let a_evens = a / 2;
