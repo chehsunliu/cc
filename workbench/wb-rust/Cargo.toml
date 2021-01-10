@@ -1,5 +1,5 @@
 [package]
-name = "workbench-rust"
+name = "wb-rust"
 version = "0.1.0"
 authors = ["chehsunliu <chehsunliu@gmail.com>"]
 edition = "2018"
