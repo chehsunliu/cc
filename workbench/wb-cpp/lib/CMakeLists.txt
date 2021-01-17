@@ -1,4 +1,4 @@
-project (wblib)
+project (lib)
 
 add_library(${PROJECT_NAME} INTERFACE)
 
@@ -13,7 +13,7 @@ set(TEST_TARGET_NAME "${PROJECT_NAME}_test")
 
 enable_testing()
 
-add_executable(${TEST_TARGET_NAME} ${PROJECT_SOURCE_DIR}/src/wblib_tests.cpp)
+add_executable(${TEST_TARGET_NAME} ${PROJECT_SOURCE_DIR}/src/workbench_tests.cpp)
 
 target_link_libraries(${TEST_TARGET_NAME}
     ${PROJECT_NAME}

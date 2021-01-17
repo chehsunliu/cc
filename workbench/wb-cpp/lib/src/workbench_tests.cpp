@@ -1,4 +1,4 @@
-#include "wblib/wblib.hpp"
+#include "workbench/workbench.hpp"
 
 #define CATCH_CONFIG_MAIN
 #include "catch2/catch.hpp"
