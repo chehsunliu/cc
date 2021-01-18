@@ -17,7 +17,7 @@ add_executable(${TEST_TARGET_NAME} ${PROJECT_SOURCE_DIR}/src/workbench_tests.cpp
 
 target_link_libraries(${TEST_TARGET_NAME}
     ${PROJECT_NAME}
-    Catch2::Test
+    Catch2::Catch2
 )
 
 add_test(test_all ${TEST_TARGET_NAME})

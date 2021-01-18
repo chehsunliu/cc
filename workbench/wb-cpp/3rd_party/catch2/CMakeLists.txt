@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.5)
+Include(FetchContent)
 
-project(catch2)
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        v2.13.4
+)
 
-add_library(Catch2 INTERFACE)
-add_library(Catch2::Test ALIAS Catch2)
-target_include_directories(Catch2 INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+FetchContent_MakeAvailable(Catch2)
