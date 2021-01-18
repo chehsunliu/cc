@@ -1,8 +1,8 @@
 #ifndef __WORKBENCH_H__
 #define __WORKBENCH_H__
 
-#include <climits>
 #include <algorithm>
+#include <climits>
 #include <stack>
 
 #include "workbench/leetcode.hpp"
@@ -12,14 +12,12 @@ using namespace std;
 namespace wb {
 
 class MinStack {
-private:
+  private:
     stack<int> storage;
     int minimum;
 
-public:
-    MinStack() {
-        this->minimum = INT_MAX;
-    }
+  public:
+    MinStack() { this->minimum = INT_MAX; }
 
     void push(int x) {
         if (x <= this->minimum) {
@@ -39,15 +37,10 @@ public:
         }
     }
 
-    int top() {
-        return this->storage.top();
-    }
-
-    int getMin() {
-        return this->minimum;
-    }
+    int top() { return this->storage.top(); }
+    int getMin() { return this->minimum; }
 };
 
-}
+} // namespace wb
 
 #endif
