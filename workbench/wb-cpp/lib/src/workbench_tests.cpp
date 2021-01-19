@@ -8,12 +8,26 @@
 TEST_CASE("example1") {
     wb::Solution sol;
 
-    REQUIRE(sol.countPrimes(10) == 4);
+    int _nums[] = {1, 2, 3, 1};
+    std::vector<int> nums(_nums, _nums + 4);
+
+    REQUIRE(sol.containsDuplicate(nums));
 }
 
 TEST_CASE("example2") {
     wb::Solution sol;
 
-    REQUIRE(sol.countPrimes(0) == 0);
-    REQUIRE(sol.countPrimes(1) == 0);
+    int _nums[] = {1, 2, 3, 4};
+    std::vector<int> nums(_nums, _nums + 4);
+
+    REQUIRE(!sol.containsDuplicate(nums));
+}
+
+TEST_CASE("example3") {
+    wb::Solution sol;
+
+    int _nums[] = {1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
+    std::vector<int> nums(_nums, _nums + 10);
+
+    REQUIRE(sol.containsDuplicate(nums));
 }
