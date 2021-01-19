@@ -6,28 +6,18 @@
 #include "workbench/workbench.hpp"
 
 TEST_CASE("example1") {
-    wb::Solution sol;
+    wb::MyStack *obj = new wb::MyStack();
 
-    int _nums[] = {1, 2, 3, 1};
-    std::vector<int> nums(_nums, _nums + 4);
+    obj->push(3);
+    obj->push(4);
+    obj->push(5);
 
-    REQUIRE(sol.containsNearbyDuplicate(nums, 3) == true);
-}
+    REQUIRE(obj->top() == 5);
+    REQUIRE(obj->pop() == 5);
+    REQUIRE(obj->top() == 4);
 
-TEST_CASE("example2") {
-    wb::Solution sol;
-
-    int _nums[] = {1, 0, 1, 1};
-    std::vector<int> nums(_nums, _nums + 4);
-
-    REQUIRE(sol.containsNearbyDuplicate(nums, 1) == true);
-}
-
-TEST_CASE("example3") {
-    wb::Solution sol;
-
-    int _nums[] = {1, 2, 3, 1, 2, 3};
-    std::vector<int> nums(_nums, _nums + 6);
-
-    REQUIRE(sol.containsNearbyDuplicate(nums, 2) == false);
+    REQUIRE(obj->pop() == 4);
+    REQUIRE(obj->empty() == false);
+    REQUIRE(obj->pop() == 3);
+    REQUIRE(obj->empty() == true);
 }
