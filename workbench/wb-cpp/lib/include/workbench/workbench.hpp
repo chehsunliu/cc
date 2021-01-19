@@ -33,7 +33,7 @@ class Solution {
             storage.pop();
             ptr = ptr->next;
         }
-        ptr->next = NULL;
+        ptr->next = nullptr;
 
         return head;
     }
