@@ -15,27 +15,17 @@ namespace wb {
 class Solution {
   public:
     ListNode *reverseList(ListNode *head) {
-        if (head == nullptr) {
-            return head;
-        }
-
-        stack<ListNode*> storage;
-
         ListNode *ptr = head;
-        while (ptr->next != nullptr) {
-            storage.push(ptr);
-            ptr = ptr->next;
+        ListNode *prev_ptr = nullptr;
+
+        while (ptr != nullptr) {
+            ListNode *next_ptr = ptr->next;
+            ptr->next = prev_ptr;
+            prev_ptr = ptr;
+            ptr = next_ptr;
         }
 
-        head = ptr;
-        while (!storage.empty()) {
-            ptr->next = storage.top();
-            storage.pop();
-            ptr = ptr->next;
-        }
-        ptr->next = NULL;
-
-        return head;
+        return prev_ptr;
     }
 };
 

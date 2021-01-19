@@ -14,25 +14,15 @@ namespace wb {
 
 class Solution {
   public:
-    ListNode *_reverse_list(ListNode *node) {
-        if (node->next == nullptr) {
-            return node;
-        }
-
-        ListNode *head = _reverse_list(node->next);
-        node->next->next = node;
-        return head;
-    }
-
     ListNode *reverseList(ListNode *head) {
-        if (head == nullptr) {
+        if (head == nullptr || head->next == nullptr) {
             return head;
         }
 
-        ListNode *end = _reverse_list(head);
+        ListNode *new_head = reverseList(head->next);
+        head->next->next = head;
         head->next = nullptr;
-
-        return end;
+        return new_head;
     }
 };
 
