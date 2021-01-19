@@ -18,4 +18,4 @@ target_link_libraries(${TEST_TARGET_NAME}
     Catch2::Catch2
 )
 
-add_test(test_all ${TEST_TARGET_NAME})
+add_test(test_workbench ${TEST_TARGET_NAME})
