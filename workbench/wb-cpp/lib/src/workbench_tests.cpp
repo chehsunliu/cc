@@ -6,60 +6,24 @@
 
 #include "workbench/workbench.hpp"
 
-TEST_CASE("example1") {
-    wb::Solution sol;
+TEST_CASE("GG #1") {
+    wb::MyQueue q;
+    REQUIRE(q.empty() == true);
 
-    int _nums[] = {0, 1, 2, 4, 5, 7};
-    vector<int> nums(_nums, _nums + 6);
-    vector<string> ans = sol.summaryRanges(nums);
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
 
-    REQUIRE(ans.size() == 3);
-    REQUIRE(ans[0] == "0->2");
-    REQUIRE(ans[1] == "4->5");
-    REQUIRE(ans[2] == "7");
-}
+    REQUIRE(q.peek() == 1);
+    REQUIRE(q.empty() == false);
+    REQUIRE(q.pop() == 1);
+    REQUIRE(q.pop() == 2);
+    REQUIRE(q.pop() == 3);
+    REQUIRE(q.peek() == 4);
+    REQUIRE(q.pop() == 4);
 
-TEST_CASE("example2") {
-    wb::Solution sol;
-
-    int _nums[] = {0, 2, 3, 4, 6, 8, 9};
-    vector<int> nums(_nums, _nums + 7);
-    vector<string> ans = sol.summaryRanges(nums);
-
-    REQUIRE(ans.size() == 4);
-    REQUIRE(ans[0] == "0");
-    REQUIRE(ans[1] == "2->4");
-    REQUIRE(ans[2] == "6");
-    REQUIRE(ans[3] == "8->9");
-}
-
-TEST_CASE("example3") {
-    wb::Solution sol;
-
-    vector<int> nums;
-    vector<string> ans = sol.summaryRanges(nums);
-
-    REQUIRE(ans.empty());
-}
-
-TEST_CASE("example4") {
-    wb::Solution sol;
-
-    int _nums[] = {-1};
-    vector<int> nums(_nums, _nums + 1);
-    vector<string> ans = sol.summaryRanges(nums);
-
-    REQUIRE(ans.size() == 1);
-    REQUIRE(ans[0] == "-1");
-}
-
-TEST_CASE("example5") {
-    wb::Solution sol;
-
-    int _nums[] = {0};
-    vector<int> nums(_nums, _nums + 1);
-    vector<string> ans = sol.summaryRanges(nums);
-
-    REQUIRE(ans.size() == 1);
-    REQUIRE(ans[0] == "0");
+    q.push(5);
+    REQUIRE(q.pop() == 5);
+    REQUIRE(q.empty() == true);
 }
