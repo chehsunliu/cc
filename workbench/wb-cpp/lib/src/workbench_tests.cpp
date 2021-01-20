@@ -1,3 +1,4 @@
+#include <string>
 #include <vector>
 
 #define CATCH_CONFIG_MAIN
@@ -6,18 +7,59 @@
 #include "workbench/workbench.hpp"
 
 TEST_CASE("example1") {
-    wb::MyStack *obj = new wb::MyStack();
+    wb::Solution sol;
 
-    obj->push(3);
-    obj->push(4);
-    obj->push(5);
+    int _nums[] = {0, 1, 2, 4, 5, 7};
+    vector<int> nums(_nums, _nums + 6);
+    vector<string> ans = sol.summaryRanges(nums);
 
-    REQUIRE(obj->top() == 5);
-    REQUIRE(obj->pop() == 5);
-    REQUIRE(obj->top() == 4);
+    REQUIRE(ans.size() == 3);
+    REQUIRE(ans[0] == "0->2");
+    REQUIRE(ans[1] == "4->5");
+    REQUIRE(ans[2] == "7");
+}
 
-    REQUIRE(obj->pop() == 4);
-    REQUIRE(obj->empty() == false);
-    REQUIRE(obj->pop() == 3);
-    REQUIRE(obj->empty() == true);
+TEST_CASE("example2") {
+    wb::Solution sol;
+
+    int _nums[] = {0, 2, 3, 4, 6, 8, 9};
+    vector<int> nums(_nums, _nums + 7);
+    vector<string> ans = sol.summaryRanges(nums);
+
+    REQUIRE(ans.size() == 4);
+    REQUIRE(ans[0] == "0");
+    REQUIRE(ans[1] == "2->4");
+    REQUIRE(ans[2] == "6");
+    REQUIRE(ans[3] == "8->9");
+}
+
+TEST_CASE("example3") {
+    wb::Solution sol;
+
+    vector<int> nums;
+    vector<string> ans = sol.summaryRanges(nums);
+
+    REQUIRE(ans.empty());
+}
+
+TEST_CASE("example4") {
+    wb::Solution sol;
+
+    int _nums[] = {-1};
+    vector<int> nums(_nums, _nums + 1);
+    vector<string> ans = sol.summaryRanges(nums);
+
+    REQUIRE(ans.size() == 1);
+    REQUIRE(ans[0] == "-1");
+}
+
+TEST_CASE("example5") {
+    wb::Solution sol;
+
+    int _nums[] = {0};
+    vector<int> nums(_nums, _nums + 1);
+    vector<string> ans = sol.summaryRanges(nums);
+
+    REQUIRE(ans.size() == 1);
+    REQUIRE(ans[0] == "0");
 }
