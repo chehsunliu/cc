@@ -1,4 +1,3 @@
-#include <string>
 #include <vector>
 
 #define CATCH_CONFIG_MAIN
@@ -7,23 +6,23 @@
 #include "workbench/workbench.hpp"
 
 TEST_CASE("GG #1") {
-    wb::MyQueue q;
-    REQUIRE(q.empty() == true);
+    int _nums[] = {1, 2};
+    std::vector<int> nums(_nums, _nums + 2);
+    wb::ListNode *head = wb::ListNode::from_vector(nums);
 
-    q.push(1);
-    q.push(2);
-    q.push(3);
-    q.push(4);
+    wb::Solution sol;
+    REQUIRE(sol.isPalindrome(head) == false);
 
-    REQUIRE(q.peek() == 1);
-    REQUIRE(q.empty() == false);
-    REQUIRE(q.pop() == 1);
-    REQUIRE(q.pop() == 2);
-    REQUIRE(q.pop() == 3);
-    REQUIRE(q.peek() == 4);
-    REQUIRE(q.pop() == 4);
+    delete head;
+}
 
-    q.push(5);
-    REQUIRE(q.pop() == 5);
-    REQUIRE(q.empty() == true);
+TEST_CASE("GG #2") {
+    int _nums[] = {1, 2, 2, 1};
+    std::vector<int> nums(_nums, _nums + 4);
+    wb::ListNode *head = wb::ListNode::from_vector(nums);
+
+    wb::Solution sol;
+    REQUIRE(sol.isPalindrome(head) == true);
+
+    delete head;
 }

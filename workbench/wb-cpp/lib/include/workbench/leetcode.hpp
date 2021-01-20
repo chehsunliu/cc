@@ -1,6 +1,8 @@
 #ifndef __LEETCODE_H__
 #define __LEETCODE_H__
 
+#include <vector>
+
 namespace wb {
 
 // Definition for singly-linked list.
@@ -10,6 +12,22 @@ struct ListNode {
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
+
+    // Customization
+    static ListNode *from_vector(const std::vector<int> &nums) {
+        if (nums.empty()) {
+            return nullptr;
+        }
+
+        auto *ptr = new ListNode(nums[0]);
+        ListNode *head = ptr;
+        for (int i = 1; i < nums.size(); i++) {
+            ptr->next = new ListNode(nums[i]);
+            ptr = ptr->next;
+        }
+        return head;
+    }
+    ~ListNode() { delete next; }
 };
 
 struct TreeNode {
@@ -21,8 +39,7 @@ struct TreeNode {
 
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 
-    TreeNode(int x, TreeNode *left, TreeNode *right)
-        : val(x), left(left), right(right) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 } // namespace wb
