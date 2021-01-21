@@ -20,8 +20,12 @@ py==1.10.0
     # via pytest
 pyparsing==2.4.7
     # via packaging
-pytest==6.2.1
+pytest-mock==3.5.1
     # via -r requirements.in
+pytest==6.2.1
+    # via
+    #   -r requirements.in
+    #   pytest-mock
 toml==0.10.2
     # via pytest
 typing-extensions==3.7.4.3
