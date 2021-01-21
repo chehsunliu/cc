@@ -6,21 +6,12 @@
 #include "workbench/workbench.hpp"
 
 TEST_CASE("GG #1") {
-    wb::Solution sol;
-    REQUIRE(sol.wordPattern("abba", "dog cat cat dog") == true);
-}
+    int _nums[] = {-2, 0, 3, -5, 2, -1};
+    std::vector<int> nums(_nums, _nums + 6);
+    wb::NumArray *obj = new wb::NumArray(nums);
 
-TEST_CASE("GG #2") {
-    wb::Solution sol;
-    REQUIRE(sol.wordPattern("abba", "dog cat cat fish") == false);
-}
-
-TEST_CASE("GG #3") {
-    wb::Solution sol;
-    REQUIRE(sol.wordPattern("aaaa", "dog cat cat dog") == false);
-}
-
-TEST_CASE("GG #4") {
-    wb::Solution sol;
-    REQUIRE(sol.wordPattern("abba", "dog dog dog dog") == false);
+    REQUIRE(obj->sumRange(0, 2) == 1);
+    REQUIRE(obj->sumRange(2, 5) == -1);
+    REQUIRE(obj->sumRange(0, 5) == -3);
+    REQUIRE(obj->sumRange(2, 3) == -2);
 }
