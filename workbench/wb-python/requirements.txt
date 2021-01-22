@@ -6,28 +6,54 @@
 #
 appdirs==1.4.4
     # via black
+appnope==0.1.2
+    # via ipython
 attrs==20.3.0
     # via pytest
+backcall==0.2.0
+    # via ipython
 black==20.8b1
     # via -r requirements.in
 click==7.1.2
     # via black
+decorator==4.4.2
+    # via ipython
 importlib-metadata==3.4.0
     # via
     #   pluggy
     #   pytest
 iniconfig==1.1.1
     # via pytest
+ipython-genutils==0.2.0
+    # via traitlets
+ipython==7.19.0
+    # via -r requirements.in
+jedi==0.17.2
+    # via
+    #   -r requirements.in
+    #   ipython
 mypy-extensions==0.4.3
     # via black
 packaging==20.8
     # via pytest
+parso==0.7.1
+    # via jedi
 pathspec==0.8.1
     # via black
+pexpect==4.8.0
+    # via ipython
+pickleshare==0.7.5
+    # via ipython
 pluggy==0.13.1
     # via pytest
+prompt-toolkit==3.0.13
+    # via ipython
+ptyprocess==0.7.0
+    # via pexpect
 py==1.10.0
     # via pytest
+pygments==2.7.4
+    # via ipython
 pyparsing==2.4.7
     # via packaging
 pytest-mock==3.5.1
@@ -42,11 +68,18 @@ toml==0.10.2
     # via
     #   black
     #   pytest
+traitlets==5.0.5
+    # via ipython
 typed-ast==1.4.2
     # via black
 typing-extensions==3.7.4.3
     # via
     #   black
     #   importlib-metadata
+wcwidth==0.2.5
+    # via prompt-toolkit
 zipp==3.4.0
     # via importlib-metadata
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
