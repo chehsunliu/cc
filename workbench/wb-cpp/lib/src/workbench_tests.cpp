@@ -5,11 +5,17 @@
 TEST_CASE("GG #1") {
     wb::Solution sol;
 
-    REQUIRE(sol.isPerfectSquare(16) == true);
-    REQUIRE(sol.isPerfectSquare(1) == true);
-    REQUIRE(sol.isPerfectSquare(4) == true);
-    REQUIRE(sol.isPerfectSquare(2000105819) == false);
-    REQUIRE(sol.isPerfectSquare(2) == false);
-    REQUIRE(sol.isPerfectSquare(3) == false);
-    REQUIRE(sol.isPerfectSquare(14) == false);
+    REQUIRE(sol.longestPalindrome("abccccdd") == 7);
+}
+
+TEST_CASE("GG #2") {
+    wb::Solution sol;
+
+    REQUIRE(sol.longestPalindrome("a") == 1);
+}
+
+TEST_CASE("GG #3") {
+    wb::Solution sol;
+
+    REQUIRE(sol.longestPalindrome("bb") == 2);
 }
