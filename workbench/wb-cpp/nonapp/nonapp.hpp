@@ -7,11 +7,11 @@
 #include <string>
 #include <unordered_map>
 
-#include "workbench/leetcode.hpp"
+#include "leetcode.hpp"
 
 using namespace std;
 
-namespace wb {
+namespace nonapp {
 
 class Solution {
   public:
@@ -34,6 +34,6 @@ class Solution {
     }
 };
 
-} // namespace wb
+} // namespace nomain
 
 #endif

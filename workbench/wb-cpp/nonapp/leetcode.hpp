@@ -3,7 +3,7 @@
 
 #include <vector>
 
-namespace wb {
+namespace leetcode {
 
 // Definition for singly-linked list.
 struct ListNode {

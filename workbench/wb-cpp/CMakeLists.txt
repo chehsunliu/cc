@@ -10,5 +10,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 enable_testing()
 
 add_subdirectory(app)
-add_subdirectory(lib)
+add_subdirectory(nonapp)
 add_subdirectory(3rd_party/catch2)

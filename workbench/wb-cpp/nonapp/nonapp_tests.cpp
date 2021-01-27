@@ -2,9 +2,9 @@
 
 #include "catch2/catch.hpp"
 
-#include "workbench/workbench.hpp"
+#include "nonapp.hpp"
 
-wb::Solution sol;
+nonapp::Solution sol;
 
 TEST_CASE("GG #1") {
     int _nums[] = {1, 8, 6, 2, 5, 4, 8, 3, 7};
