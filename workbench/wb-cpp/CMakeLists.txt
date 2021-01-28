@@ -9,6 +9,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # This line must be added before add_subdirectory.
 enable_testing()
 
-add_subdirectory(app)
-add_subdirectory(nonapp)
-add_subdirectory(3rd_party/catch2)
+add_subdirectory(src/app)
+add_subdirectory(src/nonapp)
+add_subdirectory(src/3rd_party/catch2)
