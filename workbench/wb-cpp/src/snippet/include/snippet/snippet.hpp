@@ -8,9 +8,9 @@ namespace snippet {
 
 template <class T> void print_vector(const std::vector<T> &vec) {
     for (auto &item : vec) {
-        std::cout << item << " ";
+        std::cerr << item << " ";
     }
-    std::cout << std::endl;
+    std::cerr << std::endl;
 }
 
 }
