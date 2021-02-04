@@ -1,20 +1,19 @@
+#include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <vector>
 
 //#include "snippet/snippet.hpp"
 
 typedef unsigned long long m_int;
-typedef __int128 int128;
 
-int solveByBruteForce(const std::vector<m_int> &numbers, int index, int128 product, const int128 &K) {
+int solveByBruteForce(const std::vector<m_int> &numbers, int index, double logProduct, const double &logK) {
     if (index >= numbers.size()) {
-        return product <= K ? 1 : 0;
-    } else if (product > K) {
-        return 0;
+        return logProduct <= logK ? 1 : 0;
     }
 
-    return solveByBruteForce(numbers, index + 1, product * numbers[index], K) +
-           solveByBruteForce(numbers, index + 1, product, K);
+    return solveByBruteForce(numbers, index + 1, logProduct + std::log(numbers[index]), logK) +
+           solveByBruteForce(numbers, index + 1, logProduct, logK);
 }
 
 // 10^10 = (10^3)^3*10 = 2^30 * 10
@@ -30,7 +29,7 @@ int main() {
         std::cin >> numbers[i];
     }
 
-    std::cout << solveByBruteForce(numbers, 0, 1, K) - 1 << std::endl;
+    std::cout << solveByBruteForce(numbers, 0, 0, std::log(K)) - 1 << std::endl;
 
     return 0;
 }
