@@ -1,12 +1,15 @@
 #ifndef __SNIPPET_PRIME_H__
 #define __SNIPPET_PRIME_H__
 
+#include <set>
 #include <vector>
 
 namespace snippet {
 namespace prime {
 
-std::vector<int> generatePrimesBySieveOfEratosthenes(const int upperBound) {
+std::vector<bool> constructSoETable(const int upperBound) {
+    // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
     std::vector<bool> table(upperBound + 1, true);
     table[0] = false;
     table[1] = false;
@@ -26,6 +29,11 @@ std::vector<int> generatePrimesBySieveOfEratosthenes(const int upperBound) {
         }
     }
 
+    return table;
+}
+
+std::vector<int> createPrimes(const int upperBound) {
+    std::vector<bool> table = constructSoETable(upperBound);
     std::vector<int> primes;
 
     for (int i = 0; i < table.size(); i++) {

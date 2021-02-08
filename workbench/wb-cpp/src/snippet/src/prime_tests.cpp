@@ -7,28 +7,28 @@
 TEST_CASE("prime generation") {
     SECTION("smallest prime") {
         int upperBound = 2;
-        std::vector<int> primes = snippet::prime::generatePrimesBySieveOfEratosthenes(upperBound);
+        std::vector<int> primes = snippet::prime::createPrimes(upperBound);
         std::vector<int> expected({2});
         REQUIRE(primes == expected);
     }
 
     SECTION("no prime") {
         int upperBound = 1;
-        std::vector<int> primes = snippet::prime::generatePrimesBySieveOfEratosthenes(upperBound);
+        std::vector<int> primes = snippet::prime::createPrimes(upperBound);
         std::vector<int> expected;
         REQUIRE(primes == expected);
     }
 
     SECTION("upperBound is not prime") {
         int upperBound = 14;
-        std::vector<int> primes = snippet::prime::generatePrimesBySieveOfEratosthenes(upperBound);
+        std::vector<int> primes = snippet::prime::createPrimes(upperBound);
         std::vector<int> expected({2, 3, 5, 7, 11, 13});
         REQUIRE(primes == expected);
     }
 
     SECTION("upperBound is prime") {
         int upperBound = 11;
-        std::vector<int> primes = snippet::prime::generatePrimesBySieveOfEratosthenes(upperBound);
+        std::vector<int> primes = snippet::prime::createPrimes(upperBound);
         std::vector<int> expected({2, 3, 5, 7, 11});
         REQUIRE(primes == expected);
     }
