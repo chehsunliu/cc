@@ -9,11 +9,11 @@ target_include_directories(${PROJECT_NAME}
 # Unit tests
 
 set(TEST_TARGET_NAME "test_${PROJECT_NAME}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -fPIC")
 
 add_executable(${TEST_TARGET_NAME}
   ${PROJECT_SOURCE_DIR}/src/catch2_runner.cpp
   ${PROJECT_SOURCE_DIR}/src/io_tests.cpp
+  ${PROJECT_SOURCE_DIR}/src/prime_tests.cpp
 )
 
 target_link_libraries(${TEST_TARGET_NAME}

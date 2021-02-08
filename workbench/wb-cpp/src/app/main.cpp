@@ -7,7 +7,6 @@
 typedef unsigned long long m_int;
 typedef __int128 int128;
 
-
 // https://www.codechef.com/MAY17/problems/CHEFCODE
 // 10^10 = (10^3)^3*10 = 2^30 * 10
 // 10^18 = (10^3)^6 = 2^60

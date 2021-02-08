@@ -34,6 +34,6 @@ class Solution {
     }
 };
 
-} // namespace nomain
+} // namespace nonapp
 
 #endif
