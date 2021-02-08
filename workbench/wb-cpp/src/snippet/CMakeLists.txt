@@ -20,4 +20,4 @@ target_link_libraries(${TEST_TARGET_NAME}
   Catch2::Catch2
 )
 
-add_test(test_snippet ${TEST_TARGET_NAME})
+add_test("test_${PROJECT_NAME}" ${TEST_TARGET_NAME})
