@@ -45,6 +45,19 @@ std::vector<int> createPrimes(const int upperBound) {
     return primes;
 }
 
+std::set<int> createPrimeSet(const int upperBound) {
+    std::vector<bool> table = constructSoETable(upperBound);
+    std::set<int> primes;
+
+    for (int i = 0; i < table.size(); i++) {
+        if (table[i]) {
+            primes.insert(i);
+        }
+    }
+
+    return primes;
+}
+
 } // namespace prime
 } // namespace snippet
 
