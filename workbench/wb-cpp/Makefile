@@ -1,7 +1,7 @@
 BUILD_DIR = cmake-build-debug
 
 .PHONY: all
-all: build test
+all: build
 
 .PHONY: init
 init:
