@@ -96,13 +96,14 @@ cc_int solve3(const cc_int &N) {
 int main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
 
     int T, N;
     std::cin >> T;
 
     for (int t = 0; t < T; t++) {
         std::cin >> N;
-        std::cout << solve3(N) << std::endl;
+        std::cout << solve3(N) << "\n";
     }
 
     return 0;
