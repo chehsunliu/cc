@@ -4,4 +4,4 @@
 
 ### Subset Sum
 
-- [15. 3Sum](https://leetcode.com/problems/3sum/)
+- 3Sum: [#15](https://leetcode.com/problems/3sum/)
