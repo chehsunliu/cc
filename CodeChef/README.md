@@ -1,16 +1,18 @@
 # CodeChef
 
-## Knapsack
+## Categories
 
-- [KNPSK](https://www.codechef.com/problems/KNPSK)
-- [PPTEST](https://www.codechef.com/problems/PPTEST)
+### Knapsack
 
-## Prime
+- Knapsack Problem: [KNPSK](https://www.codechef.com/problems/KNPSK)
+- Polo the Penguin and the Test: [PPTEST](https://www.codechef.com/problems/PPTEST)
 
-- [KPRIME](https://www.codechef.com/problems/KPRIME)
+### Prime
 
-## Subset Sum
+- Count K-Primes: [KPRIME](https://www.codechef.com/problems/KPRIME)
 
-- [CHEFCODE](https://www.codechef.com/problems/CHEFCODE)
-- [TF01](https://www.codechef.com/problems/TF01)
-- [ZCO17001](https://www.codechef.com/problems/ZCO17001)
+### Subset Sum
+
+- Subset Sum: [TF01](https://www.codechef.com/problems/TF01)
+- Chef and Subsequences: [CHEFCODE](https://www.codechef.com/problems/CHEFCODE)
+- Four Sum: [ZCO17001](https://www.codechef.com/ZCOPRAC/problems/ZCO17001)
