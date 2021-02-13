@@ -6,6 +6,7 @@ all: build
 .PHONY: init
 init:
 	@echo "> Run CMake"
+	@mkdir -p $(BUILD_DIR)
 	@cmake -S . -B $(BUILD_DIR)
 
 .PHONY: build
