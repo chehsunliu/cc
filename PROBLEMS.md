@@ -1,21 +1,19 @@
-# Resource
+# Problems
 
-## Problems Grouped by Category
-
-### Knapsack
+## Knapsack
 
 CodeChef:
 
 - Knapsack Problem: [KNPSK](https://www.codechef.com/problems/KNPSK)
 - Polo the Penguin and the Test: [PPTEST](https://www.codechef.com/problems/PPTEST)
 
-### Prime
+## Prime
 
 CodeChef:
 
 - Count K-Primes: [KPRIME](https://www.codechef.com/problems/KPRIME)
 
-### Subset Sum
+## Subset Sum
 
 CodeChef:
 
