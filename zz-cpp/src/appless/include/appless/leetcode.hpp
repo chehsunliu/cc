@@ -1,5 +1,5 @@
-#ifndef __LEETCODE_H__
-#define __LEETCODE_H__
+#ifndef __APPLESS_LEETCODE_H__
+#define __APPLESS_LEETCODE_H__
 
 #include <vector>
 

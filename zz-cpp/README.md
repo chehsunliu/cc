@@ -13,13 +13,16 @@ This project is managed by CMake with the following structure:
     │       └── CMakeLists.txt
     ├── app
     │   ├── CMakeLists.txt
-    │   └── main.cpp              <-- CodeChef / Codeforces
+    │   └── main.cpp               <-- for CodeChef, Codeforces, and etc.
     ├── appless
     │   ├── CMakeLists.txt
-    │   ├── appless.hpp           <-- LeetCode
-    │   ├── appless_tests.cpp
-    │   ├── catch2_runner.cpp
-    │   └── leetcode.hpp
+    │   ├── include
+    │   │   └── appless
+    │   │       ├── appless.hpp    <-- for LeetCode
+    │   │       └── leetcode.hpp
+    │   └── src
+    │       ├── appless_tests.cpp
+    │       └── catch2_runner.cpp
     └── snippet
         ├── CMakeLists.txt
         ├── include

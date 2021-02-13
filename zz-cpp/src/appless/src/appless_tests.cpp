@@ -2,7 +2,7 @@
 
 #include "catch2/catch.hpp"
 
-#include "appless.hpp"
+#include "appless/appless.hpp"
 
 appless::Solution sol;
 
