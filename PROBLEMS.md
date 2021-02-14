@@ -38,3 +38,4 @@ LeetCode:
 LeetCode:
 
 - Remove Nth Node From End of List: [#19](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
+- Swap Nodes in Pairs: [#24](https://leetcode.com/problems/swap-nodes-in-pairs/)
