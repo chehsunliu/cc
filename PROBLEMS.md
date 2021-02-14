@@ -32,3 +32,9 @@ LeetCode:
 LeetCode:
 
 - Generate Parentheses: [#22](https://leetcode.com/problems/generate-parentheses/)
+
+## Linked List
+
+LeetCode:
+
+- Remove Nth Node From End of List: [#19](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
