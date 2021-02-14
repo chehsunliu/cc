@@ -7,25 +7,21 @@
 appless::Solution sol;
 
 TEST_CASE("GG #1") {
-    int _nums[] = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-    std::vector<int> nums(_nums, _nums + sizeof(_nums) / sizeof(_nums[0]));
-    REQUIRE(sol.maxArea(nums) == 49);
+    std::vector<int> nums({-1, 2, 1, -4});
+    REQUIRE(sol.threeSumClosest(nums, 1) == 2);
 }
 
 TEST_CASE("GG #2") {
-    int _nums[] = {1, 1};
-    std::vector<int> nums(_nums, _nums + sizeof(_nums) / sizeof(_nums[0]));
-    REQUIRE(sol.maxArea(nums) == 1);
+    std::vector<int> nums({-1, 2, 1, -4});
+    REQUIRE(sol.threeSumClosest(nums, 3) == 2);
 }
 
 TEST_CASE("GG #3") {
-    int _nums[] = {4, 3, 2, 1, 4};
-    std::vector<int> nums(_nums, _nums + sizeof(_nums) / sizeof(_nums[0]));
-    REQUIRE(sol.maxArea(nums) == 16);
+    std::vector<int> nums({-1, 2, 1, -4, 1, 6, 2});
+    REQUIRE(sol.threeSumClosest(nums, 16) == 10);
 }
 
 TEST_CASE("GG #4") {
-    int _nums[] = {1, 2, 1};
-    std::vector<int> nums(_nums, _nums + sizeof(_nums) / sizeof(_nums[0]));
-    REQUIRE(sol.maxArea(nums) == 2);
+    std::vector<int> nums({-1, 2, 1, -4, 6, 4, 8, 1, 4, 8, -6});
+    REQUIRE(sol.threeSumClosest(nums, 23) == 22);
 }
