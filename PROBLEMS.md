@@ -24,3 +24,4 @@ CodeChef:
 LeetCode:
 
 - 3Sum: [#15](https://leetcode.com/problems/3sum/)
+- 3Sum Closest: [#16](https://leetcode.com/problems/3sum-closest/)
