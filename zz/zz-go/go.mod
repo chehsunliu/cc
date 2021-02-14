@@ -1,4 +1,4 @@
-module github.com/chehsunliu/cc/zz-go
+module github.com/chehsunliu/cc/zz/zz-go
 
 go 1.15
 
