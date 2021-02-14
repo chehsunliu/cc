@@ -1,6 +1,10 @@
 #ifndef __APPLESS_LEETCODE_H__
 #define __APPLESS_LEETCODE_H__
 
+#include <algorithm>
+#include <climits>
+#include <map>
+#include <set>
 #include <vector>
 
 namespace leetcode {
