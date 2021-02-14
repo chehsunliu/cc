@@ -25,3 +25,4 @@ LeetCode:
 
 - 3Sum: [#15](https://leetcode.com/problems/3sum/)
 - 3Sum Closest: [#16](https://leetcode.com/problems/3sum-closest/)
+- 4Sum: [#18](https://leetcode.com/problems/4sum/)
