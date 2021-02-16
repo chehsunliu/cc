@@ -13,6 +13,7 @@ set(TEST_TARGET_NAME "test_${PROJECT_NAME}")
 add_executable(${TEST_TARGET_NAME}
   ${PROJECT_SOURCE_DIR}/src/catch2_runner.cpp
   ${PROJECT_SOURCE_DIR}/src/io_tests.cpp
+  ${PROJECT_SOURCE_DIR}/src/modulo_tests.cpp
   ${PROJECT_SOURCE_DIR}/src/prime_tests.cpp
 )
 
