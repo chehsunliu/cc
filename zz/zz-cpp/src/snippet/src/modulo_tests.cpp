@@ -19,6 +19,10 @@ TEST_CASE("Small number") {
     SECTION("Comparison operators") {
         REQUIRE(mint7(3) == mint7(10));
         REQUIRE(mint7(3) != mint7(9));
+        REQUIRE(mint7(3) > mint7(9));
+        REQUIRE(mint7(3) >= mint7(10));
+        REQUIRE(mint7(14) < mint7(11));
+        REQUIRE(mint7(14) <= mint7(10));
     }
 
     SECTION("Immutable arithmetic operators") {
@@ -33,6 +37,7 @@ TEST_CASE("Small number") {
         REQUIRE(a2 - a1 == 1);
 
         REQUIRE(a1 * a2 == 2);
+        REQUIRE(a1 * a2 * a1 == 3);
     }
 
     SECTION("Mutable arithmetic operators / addition") {
@@ -58,6 +63,12 @@ TEST_CASE("Small number") {
 
         REQUIRE((a1 -= 15) == 5);
         REQUIRE((a1 -= 6) == 6);
+    }
+
+    SECTION("Mutable arithmetic operators / multiplication") {
+        mint7 a1 = 4;
+        REQUIRE((a1 *= 15) == 4);
+        REQUIRE((a1 *= 6) == 3);
     }
 }
 

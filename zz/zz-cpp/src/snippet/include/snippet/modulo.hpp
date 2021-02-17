@@ -17,6 +17,10 @@ class ModuloNumber {
 
     bool operator==(const ModuloNumber &rhs) const;
     bool operator!=(const ModuloNumber &rhs) const;
+    bool operator<(const ModuloNumber &rhs) const;
+    bool operator>(const ModuloNumber &rhs) const;
+    bool operator<=(const ModuloNumber &rhs) const;
+    bool operator>=(const ModuloNumber &rhs) const;
 
     ModuloNumber operator+(const ModuloNumber &rhs) const;
     ModuloNumber operator-(const ModuloNumber &rhs) const;
@@ -30,6 +34,7 @@ class ModuloNumber {
     ModuloNumber &operator=(const ModuloNumber &rhs);
     ModuloNumber &operator+=(const ModuloNumber &rhs);
     ModuloNumber &operator-=(const ModuloNumber &rhs);
+    ModuloNumber &operator*=(const ModuloNumber &rhs);
 
     friend std::istream &operator>>(std::istream &is, ModuloNumber &number) {
         T tmp;
@@ -55,6 +60,26 @@ bool ModuloNumber<T, Modulus>::operator==(const ModuloNumber &rhs) const {
 template <class T, int Modulus>
 bool ModuloNumber<T, Modulus>::operator!=(const ModuloNumber &rhs) const {
     return !(*this == rhs);
+}
+
+template <class T, int Modulus>
+bool ModuloNumber<T, Modulus>::operator<(const ModuloNumber &rhs) const {
+    return this->value < rhs.value;
+}
+
+template <class T, int Modulus>
+bool ModuloNumber<T, Modulus>::operator>(const ModuloNumber &rhs) const {
+    return this->value > rhs.value;
+}
+
+template <class T, int Modulus>
+bool ModuloNumber<T, Modulus>::operator<=(const ModuloNumber &rhs) const {
+    return !(*this > rhs);
+}
+
+template <class T, int Modulus>
+bool ModuloNumber<T, Modulus>::operator>=(const ModuloNumber &rhs) const {
+    return !(*this < rhs);
 }
 
 template <class T, int Modulus>
@@ -117,6 +142,12 @@ ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator+=(const ModuloNumbe
 template <class T, int Modulus>
 ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator-=(const ModuloNumber &rhs) {
     this->value = (this->value + Modulus - rhs.value) % Modulus;
+    return *this;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator*=(const ModuloNumber &rhs) {
+    this->value = (this->value * rhs.value) % Modulus;
     return *this;
 }
 
