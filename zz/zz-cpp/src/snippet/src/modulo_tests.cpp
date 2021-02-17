@@ -10,38 +10,58 @@ using namespace snippet::modulo;
 typedef ModuloNumber<int, 7> mint7;
 
 TEST_CASE("Small number arithmetic") {
-    SECTION("addition") {
-        mint7 a1 = 12;
-        mint7 a2 = 13;
+    SECTION("constructor") {
+        mint7 a1 = -1;
+        REQUIRE(a1 == 6);
+    }
 
+    SECTION("addition / +") {
+        mint7 a1 = 12, a2 = 13;
         REQUIRE(a1 + a2 == 4);
         REQUIRE(a1 + a2 != 5);
         REQUIRE(a1 + a2 == 25);
         REQUIRE(a1 + a2 != 26);
+    }
 
+    SECTION("addition / ++") {
+        mint7 a1 = 12;
         REQUIRE(a1++ == 5);
         REQUIRE(a1 == 6);
         REQUIRE(++a1 == 0);
         REQUIRE(a1 == 0);
     }
 
-    SECTION("subtraction") {
-        mint7 a1 = 4;
-        mint7 a2 = 17;
+    SECTION("addition / +=") {
+        mint7 a1 = 12;
+        REQUIRE((a1 += 15) == 6);
+        REQUIRE((a1 += 6) == 5);
+    }
 
+    SECTION("subtraction / -") {
+        mint7 a1 = 4, a2 = 17;
         REQUIRE(a1 - a2 == 1);
         REQUIRE(a2 - a1 == 6);
+    }
 
+    SECTION("subtraction / --") {
+        mint7 a1 = 4;
         REQUIRE(a1-- == 4);
         REQUIRE(a1 == 3);
         REQUIRE(--a1 == 2);
         REQUIRE(a1 == 2);
+        REQUIRE(--a1 == 1);
+        REQUIRE(--a1 == 0);
+        REQUIRE(--a1 == 6);
+    }
+
+    SECTION("subtraction / -=") {
+        mint7 a1 = 4;
+        REQUIRE((a1 -= 15) == 3);
+        REQUIRE((a1 -= 6) == 4);
     }
 
     SECTION("multiplication") {
-        mint7 a1 = 12;
-        mint7 a2 = 13;
-
+        mint7 a1 = 12, a2 = 13;
         REQUIRE(a1 * a2 == 2);
     }
 }

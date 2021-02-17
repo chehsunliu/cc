@@ -9,7 +9,10 @@ namespace modulo {
 template <class T, int Modulus = 1000000007> class ModuloNumber {
   public:
     ModuloNumber() : value(0) {}
-    ModuloNumber(const T &value) : value(value % Modulus) {}
+    ModuloNumber(const T &value) {
+        this->value = value >= 0 ? value : value + Modulus * ((-value) / Modulus + 1);
+        this->value %= Modulus;
+    }
 
     ModuloNumber &operator=(const ModuloNumber &rhs) {
         this->value = rhs.value;
@@ -32,9 +35,13 @@ template <class T, int Modulus = 1000000007> class ModuloNumber {
 
     ModuloNumber operator++(int) {
         ModuloNumber tmp = *this;
-        this->value++;
-        this->value %= Modulus;
+        ++(*this);
         return tmp;
+    }
+
+    ModuloNumber &operator+=(const ModuloNumber &rhs) {
+        this->value = (this->value + rhs.value) % Modulus;
+        return *this;
     }
 
     ModuloNumber operator-(const ModuloNumber &rhs) const {
@@ -43,16 +50,19 @@ template <class T, int Modulus = 1000000007> class ModuloNumber {
     }
 
     ModuloNumber &operator--() {
-        this->value--;
-        this->value %= Modulus;
+        this->value = this->value == 0 ? Modulus - 1 : this->value - 1;
         return *this;
     }
 
     ModuloNumber operator--(int) {
         ModuloNumber tmp = *this;
-        this->value--;
-        this->value %= Modulus;
+        --(*this);
         return tmp;
+    }
+
+    ModuloNumber &operator-=(const ModuloNumber &rhs) {
+        this->value = (this->value + Modulus - rhs.value) % Modulus;
+        return *this;
     }
 
     ModuloNumber operator*(const ModuloNumber &rhs) const {
