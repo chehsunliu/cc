@@ -10,10 +10,10 @@ using namespace snippet::modulo;
 typedef ModuloNumber<int, 7> mint7;
 
 TEST_CASE("Small number arithmetic") {
-    mint7 a1 = 12;
-    mint7 a2 = 13;
+    SECTION("addition") {
+        mint7 a1 = 12;
+        mint7 a2 = 13;
 
-    SECTION("add") {
         REQUIRE(a1 + a2 == 4);
         REQUIRE(a1 + a2 != 5);
         REQUIRE(a1 + a2 == 25);
@@ -25,12 +25,25 @@ TEST_CASE("Small number arithmetic") {
         REQUIRE(a1 == 0);
     }
 
-    SECTION("subtract") {
-        REQUIRE(a1 - a2 == 6);
-        REQUIRE(a2 - a1 == 1);
+    SECTION("subtraction") {
+        mint7 a1 = 4;
+        mint7 a2 = 17;
+
+        REQUIRE(a1 - a2 == 1);
+        REQUIRE(a2 - a1 == 6);
+
+        REQUIRE(a1-- == 4);
+        REQUIRE(a1 == 3);
+        REQUIRE(--a1 == 2);
+        REQUIRE(a1 == 2);
     }
 
-    SECTION("multiply") { REQUIRE(a1 * a2 == 2); }
+    SECTION("multiplication") {
+        mint7 a1 = 12;
+        mint7 a2 = 13;
+
+        REQUIRE(a1 * a2 == 2);
+    }
 }
 
 TEST_CASE("IO") {
@@ -50,6 +63,6 @@ TEST_CASE("IO") {
 
         std::ostringstream stream;
         stream << a1 << " " << a2;
-        REQUIRE(stream.str() == "<2 (mod 7)> <5 (mod 7)>");
+        REQUIRE(stream.str() == "ModuloNumber(2 mod 7) ModuloNumber(5 mod 7)");
     }
 }

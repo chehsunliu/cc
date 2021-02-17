@@ -24,16 +24,6 @@ template <class T, int Modulus = 1000000007> class ModuloNumber {
         return ModuloNumber(tmp);
     }
 
-    ModuloNumber operator-(const ModuloNumber &rhs) const {
-        T tmp = (this->value < rhs.value ? this->value + Modulus : this->value) - rhs.value;
-        return ModuloNumber(tmp);
-    }
-
-    ModuloNumber operator*(const ModuloNumber &rhs) const {
-        T tmp = this->value * rhs.value;
-        return ModuloNumber(tmp);
-    }
-
     ModuloNumber &operator++() {
         this->value++;
         this->value %= Modulus;
@@ -47,6 +37,29 @@ template <class T, int Modulus = 1000000007> class ModuloNumber {
         return tmp;
     }
 
+    ModuloNumber operator-(const ModuloNumber &rhs) const {
+        T tmp = (this->value < rhs.value ? this->value + Modulus : this->value) - rhs.value;
+        return ModuloNumber(tmp);
+    }
+
+    ModuloNumber &operator--() {
+        this->value--;
+        this->value %= Modulus;
+        return *this;
+    }
+
+    ModuloNumber operator--(int) {
+        ModuloNumber tmp = *this;
+        this->value--;
+        this->value %= Modulus;
+        return tmp;
+    }
+
+    ModuloNumber operator*(const ModuloNumber &rhs) const {
+        T tmp = this->value * rhs.value;
+        return ModuloNumber(tmp);
+    }
+
     friend std::istream &operator>>(std::istream &is, ModuloNumber &number) {
         T tmp;
         is >> tmp;
@@ -55,7 +68,7 @@ template <class T, int Modulus = 1000000007> class ModuloNumber {
     }
 
     friend std::ostream &operator<<(std::ostream &os, const ModuloNumber &number) {
-        os << "<" << number.value << " (mod " << Modulus << ")>";
+        os << "ModuloNumber(" << number.value << " mod " << Modulus << ")";
         return os;
     }
 
