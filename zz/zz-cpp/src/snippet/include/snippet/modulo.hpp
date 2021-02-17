@@ -6,69 +6,30 @@
 namespace snippet {
 namespace modulo {
 
-template <class T, int Modulus = 1000000007> class ModuloNumber {
-  public:
+template <class T, int Modulus = 1000000007>
+class ModuloNumber {
+   public:
     ModuloNumber() : value(0) {}
     ModuloNumber(const T &value) {
         this->value = value >= 0 ? value : value + Modulus * ((-value) / Modulus + 1);
         this->value %= Modulus;
     }
 
-    ModuloNumber &operator=(const ModuloNumber &rhs) {
-        this->value = rhs.value;
-        return *this;
-    }
+    bool operator==(const ModuloNumber &rhs) const;
+    bool operator!=(const ModuloNumber &rhs) const;
 
-    bool operator==(const ModuloNumber &rhs) const { return this->value == rhs.value; }
-    bool operator!=(const ModuloNumber &rhs) const { return !(*this == rhs); }
+    ModuloNumber operator+(const ModuloNumber &rhs) const;
+    ModuloNumber operator-(const ModuloNumber &rhs) const;
+    ModuloNumber operator*(const ModuloNumber &rhs) const;
 
-    ModuloNumber operator+(const ModuloNumber &rhs) const {
-        T tmp = this->value + rhs.value;
-        return ModuloNumber(tmp);
-    }
+    ModuloNumber &operator++();
+    ModuloNumber operator++(int);
+    ModuloNumber &operator--();
+    ModuloNumber operator--(int);
 
-    ModuloNumber &operator++() {
-        this->value++;
-        this->value %= Modulus;
-        return *this;
-    }
-
-    ModuloNumber operator++(int) {
-        ModuloNumber tmp = *this;
-        ++(*this);
-        return tmp;
-    }
-
-    ModuloNumber &operator+=(const ModuloNumber &rhs) {
-        this->value = (this->value + rhs.value) % Modulus;
-        return *this;
-    }
-
-    ModuloNumber operator-(const ModuloNumber &rhs) const {
-        T tmp = (this->value < rhs.value ? this->value + Modulus : this->value) - rhs.value;
-        return ModuloNumber(tmp);
-    }
-
-    ModuloNumber &operator--() {
-        this->value = this->value == 0 ? Modulus - 1 : this->value - 1;
-        return *this;
-    }
-
-    ModuloNumber operator--(int) {
-        ModuloNumber tmp = *this;
-        --(*this);
-        return tmp;
-    }
-
-    ModuloNumber &operator-=(const ModuloNumber &rhs) {
-        this->value = (this->value + Modulus - rhs.value) % Modulus;
-        return *this;
-    }
-
-    ModuloNumber operator*(const ModuloNumber &rhs) const {
-        T tmp = this->value * rhs.value;
-        return ModuloNumber(tmp);
-    }
+    ModuloNumber &operator=(const ModuloNumber &rhs);
+    ModuloNumber &operator+=(const ModuloNumber &rhs);
+    ModuloNumber &operator-=(const ModuloNumber &rhs);
 
     friend std::istream &operator>>(std::istream &is, ModuloNumber &number) {
         T tmp;
@@ -82,11 +43,84 @@ template <class T, int Modulus = 1000000007> class ModuloNumber {
         return os;
     }
 
-  private:
+   private:
     T value;
 };
 
-} // namespace modulo
-} // namespace snippet
+template <class T, int Modulus>
+bool ModuloNumber<T, Modulus>::operator==(const ModuloNumber &rhs) const {
+    return this->value == rhs.value;
+}
+
+template <class T, int Modulus>
+bool ModuloNumber<T, Modulus>::operator!=(const ModuloNumber &rhs) const {
+    return !(*this == rhs);
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> ModuloNumber<T, Modulus>::operator+(const ModuloNumber &rhs) const {
+    T tmp = this->value + rhs.value;
+    return ModuloNumber(tmp);
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> ModuloNumber<T, Modulus>::operator-(const ModuloNumber &rhs) const {
+    T tmp = (this->value < rhs.value ? this->value + Modulus : this->value) - rhs.value;
+    return ModuloNumber(tmp);
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> ModuloNumber<T, Modulus>::operator*(const ModuloNumber &rhs) const {
+    T tmp = this->value * rhs.value;
+    return ModuloNumber(tmp);
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator++() {
+    this->value++;
+    this->value %= Modulus;
+    return *this;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> ModuloNumber<T, Modulus>::operator++(int) {
+    ModuloNumber tmp = *this;
+    ++(*this);
+    return tmp;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator--() {
+    this->value = this->value == 0 ? Modulus - 1 : this->value - 1;
+    return *this;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> ModuloNumber<T, Modulus>::operator--(int) {
+    ModuloNumber tmp = *this;
+    --(*this);
+    return tmp;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator=(const ModuloNumber &rhs) {
+    this->value = rhs.value;
+    return *this;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator+=(const ModuloNumber &rhs) {
+    this->value = (this->value + rhs.value) % Modulus;
+    return *this;
+}
+
+template <class T, int Modulus>
+ModuloNumber<T, Modulus> &ModuloNumber<T, Modulus>::operator-=(const ModuloNumber &rhs) {
+    this->value = (this->value + Modulus - rhs.value) % Modulus;
+    return *this;
+}
+
+}  // namespace modulo
+}  // namespace snippet
 
 #endif
