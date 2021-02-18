@@ -10,7 +10,7 @@ template <int64_t Modulus>
 class ModuloInt {
     using i64 = int64_t;
 
-   public:
+public:
     ModuloInt() : value(0) {}
     ModuloInt(const i64 &v) : value(v) {
         value = value >= 0 ? value : value + Modulus * ((-value) / Modulus + 1);
@@ -69,7 +69,7 @@ class ModuloInt {
         return os;
     }
 
-   private:
+private:
     i64 value;
 };
 
