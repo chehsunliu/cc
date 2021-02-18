@@ -71,6 +71,17 @@ public:
 
 private:
     i64 value;
+
+    constexpr static bool modulusIsPrime() {
+        for (i64 i = 2; i * i <= Modulus; i++) {
+            if (Modulus % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static_assert(modulusIsPrime(), "Modulus must be a prime.");
 };
 
 }  // namespace modulo
