@@ -6,7 +6,7 @@
 
 using namespace snippet::modulo;
 
-typedef ModuloNumber<int, 7> mint7;
+typedef ModuloInt<7> mint7;
 
 TEST_CASE("Small number") {
     SECTION("Constructors") {
