@@ -28,6 +28,7 @@ public:
     ModuloInt operator+(const ModuloInt &rhs) const { return ModuloInt(*this) += rhs; }
     ModuloInt operator-(const ModuloInt &rhs) const { return ModuloInt(*this) -= rhs; }
     ModuloInt operator*(const ModuloInt &rhs) const { return ModuloInt(*this) *= rhs; }
+    ModuloInt operator/(const ModuloInt &rhs) const { return ModuloInt(*this) /= rhs; }
 
     ModuloInt &operator++() { return *this += 1; }
     ModuloInt operator++(int) {
@@ -58,6 +59,11 @@ public:
         this->value = (this->value * rhs.value) % Modulus;
         return *this;
     }
+    ModuloInt &operator/=(const ModuloInt &rhs) {
+        ModuloInt tmp = (*this) * rhs.inverse();
+        this->value = tmp.value;
+        return *this;
+    }
 
     ModuloInt power(u32 n) const {
         if (n == 0) {
@@ -84,7 +90,7 @@ public:
         return is;
     }
     friend std::ostream &operator<<(std::ostream &os, const ModuloInt &number) {
-        os << "ModuloNumber(" << number.value << " mod " << Modulus << ")";
+        os << number.value;
         return os;
     }
 

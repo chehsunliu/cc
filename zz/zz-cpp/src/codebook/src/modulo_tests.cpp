@@ -39,6 +39,9 @@ TEST_CASE("Modulo 7") {
 
         REQUIRE(a1 * a2 == 2);
         REQUIRE(a1 * a2 * a1 == 3);
+
+        REQUIRE(a1 / a2 == 2);
+        REQUIRE(a2 / a1 == 4);
     }
 
     SECTION("Mutable arithmetic operators / addition") {
@@ -70,6 +73,16 @@ TEST_CASE("Modulo 7") {
         mint7 a1 = 4;
         REQUIRE((a1 *= 15) == 4);
         REQUIRE((a1 *= 6) == 3);
+    }
+
+    SECTION("Mutable arithmetic operators / division") {
+        REQUIRE((mint7(5) /= 1) == 5);
+        REQUIRE((mint7(5) /= 2) == 6);
+        REQUIRE((mint7(5) /= 3) == 4);
+        REQUIRE((mint7(5) /= 4) == 3);
+        REQUIRE((mint7(5) /= 5) == 1);
+        REQUIRE((mint7(5) /= 6) == 2);
+        REQUIRE((mint7(5) /= 7) == 0);
     }
 
     SECTION("Power") {
@@ -124,6 +137,6 @@ TEST_CASE("IO") {
 
         std::ostringstream stream;
         stream << a1 << " " << a2;
-        REQUIRE(stream.str() == "ModuloNumber(2 mod 7) ModuloNumber(5 mod 7)");
+        REQUIRE(stream.str() == "2 5");
     }
 }
