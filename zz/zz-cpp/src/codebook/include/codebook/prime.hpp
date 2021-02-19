@@ -1,5 +1,5 @@
-#ifndef __SNIPPET_PRIME_H__
-#define __SNIPPET_PRIME_H__
+#ifndef __CODEBOOK_PRIME_H__
+#define __CODEBOOK_PRIME_H__
 
 #include <set>
 #include <vector>

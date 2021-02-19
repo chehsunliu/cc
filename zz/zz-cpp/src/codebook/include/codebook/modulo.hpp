@@ -1,5 +1,5 @@
-#ifndef __SNIPPET_MODULO_H__
-#define __SNIPPET_MODULO_H__
+#ifndef __CODEBOOK_MODULO_H__
+#define __CODEBOOK_MODULO_H__
 
 #include <iostream>
 
