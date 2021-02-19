@@ -7,8 +7,9 @@
 using namespace snippet::modulo;
 
 typedef ModuloInt<7> mint7;
+typedef ModuloInt<1000000007> mint;
 
-TEST_CASE("Small number") {
+TEST_CASE("Modulo 7") {
     SECTION("Constructors") {
         REQUIRE(mint7(-8) == 6);
         REQUIRE(mint7(-1) == 6);
@@ -96,6 +97,13 @@ TEST_CASE("Small number") {
         REQUIRE(a.power(4) == 2);
         REQUIRE(a.power(5) == 3);
         REQUIRE(a.power(6) == 1);
+    }
+}
+
+TEST_CASE("Modulo 1000000007") {
+    SECTION("Inverse") {
+        REQUIRE(mint(123).inverse() == 886178868);
+        REQUIRE(mint(555).inverse() == 174774776);
     }
 }
 

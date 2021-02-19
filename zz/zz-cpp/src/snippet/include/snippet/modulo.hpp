@@ -59,7 +59,7 @@ public:
         return *this;
     }
 
-    ModuloInt power(u32 n) {
+    ModuloInt power(u32 n) const {
         if (n == 0) {
             return 1;
         }
@@ -74,6 +74,8 @@ public:
 
         return result * power(n - currentExp);
     }
+
+    ModuloInt inverse() const { return this->power(Modulus - 2); }
 
     friend std::istream &operator>>(std::istream &is, ModuloInt &number) {
         i64 tmp;
