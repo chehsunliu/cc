@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "codebook/codebook.hpp"
+//#include "codebook/codebook.hpp"
 
 #ifndef __CODEBOOK_MODULO_H__
 #define __CODEBOOK_MODULO_H__
@@ -150,21 +150,20 @@ std::vector<mint> setup(int array[], const int &n) {
         }
     }
 
-    codebook::io::print_vector(n0);
-    codebook::io::print_vector(n1);
-
     std::vector<mint> ms(n, 0);
     for (int m = 1; m <= n; m++) {
         mint s = 0;
         for (int i = 0; i < 32; i++) {
-            for (int j = 1; j <= n1[i] && j <= m && m - j <= n0[i]; j += 2) {
+            for (int j = 1; j <= n1[i]; j += 2) {
+                if (j > m || m - j > n0[i]) {
+                    continue;
+                }
+
                 s += combination(n1[i], j) * combination(n0[i], m - j) * mint(2).power(i);
             }
         }
         ms[m - 1] = s;
     }
-
-    codebook::io::print_vector(ms);
 
     for (int i = 1; i < ms.size(); i++) {
         ms[i] += ms[i - 1];

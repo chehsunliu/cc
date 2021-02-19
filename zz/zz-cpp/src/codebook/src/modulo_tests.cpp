@@ -39,6 +39,7 @@ TEST_CASE("Modulo 7") {
 
         REQUIRE(a1 * a2 == 2);
         REQUIRE(a1 * a2 * a1 == 3);
+        REQUIRE(a1 * a2 * a1 * 0 == 0);
 
         REQUIRE(a1 / a2 == 2);
         REQUIRE(a2 / a1 == 4);
