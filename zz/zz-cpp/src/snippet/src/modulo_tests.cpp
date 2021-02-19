@@ -70,6 +70,33 @@ TEST_CASE("Small number") {
         REQUIRE((a1 *= 15) == 4);
         REQUIRE((a1 *= 6) == 3);
     }
+
+    SECTION("Power") {
+        mint7 a = 2;
+        REQUIRE(a.power(0) == 1);
+        REQUIRE(a.power(1) == 2);
+        REQUIRE(a.power(2) == 4);
+        REQUIRE(a.power(3) == 1);
+        REQUIRE(a.power(4) == 2);
+
+        a = 3;
+        REQUIRE(a.power(0) == 1);
+        REQUIRE(a.power(1) == 3);
+        REQUIRE(a.power(2) == 2);
+        REQUIRE(a.power(3) == 6);
+        REQUIRE(a.power(4) == 4);
+        REQUIRE(a.power(5) == 5);
+        REQUIRE(a.power(6) == 1);
+
+        a = 12;
+        REQUIRE(a.power(0) == 1);
+        REQUIRE(a.power(1) == 5);
+        REQUIRE(a.power(2) == 4);
+        REQUIRE(a.power(3) == 6);
+        REQUIRE(a.power(4) == 2);
+        REQUIRE(a.power(5) == 3);
+        REQUIRE(a.power(6) == 1);
+    }
 }
 
 TEST_CASE("IO") {

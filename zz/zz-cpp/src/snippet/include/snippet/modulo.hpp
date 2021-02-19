@@ -8,6 +8,7 @@ namespace modulo {
 
 template <int64_t Modulus>
 class ModuloInt {
+    using u32 = uint32_t;
     using i64 = int64_t;
 
 public:
@@ -56,6 +57,22 @@ public:
     ModuloInt &operator*=(const ModuloInt &rhs) {
         this->value = (this->value * rhs.value) % Modulus;
         return *this;
+    }
+
+    ModuloInt power(u32 n) {
+        if (n == 0) {
+            return 1;
+        }
+
+        ModuloInt result = this->value;
+        u32 currentExp = 1;
+
+        while (currentExp * 2 <= n) {
+            result *= result;
+            currentExp *= 2;
+        }
+
+        return result * power(n - currentExp);
     }
 
     friend std::istream &operator>>(std::istream &is, ModuloInt &number) {
