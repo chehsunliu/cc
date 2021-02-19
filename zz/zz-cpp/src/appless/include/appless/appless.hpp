@@ -9,7 +9,7 @@ using namespace leetcode;
 namespace appless {
 
 class Solution {
-  public:
+public:
     ListNode *traverse(ListNode *node, int index) {
         if (node == nullptr) {
             return nullptr;
@@ -31,11 +31,9 @@ class Solution {
         }
     }
 
-    ListNode *swapPairs(ListNode *head) {
-        return traverse(head, 0);
-    }
+    ListNode *swapPairs(ListNode *head) { return traverse(head, 0); }
 };
 
-} // namespace appless
+}  // namespace appless
 
 #endif

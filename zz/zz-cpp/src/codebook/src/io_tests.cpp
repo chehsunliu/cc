@@ -1,7 +1,6 @@
 #include <vector>
 
 #include "catch2/catch.hpp"
-
 #include "codebook/io.hpp"
 
 TEST_CASE("Simple call for print_vector should work normally") {

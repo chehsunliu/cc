@@ -58,7 +58,7 @@ std::set<int> createPrimeSet(const int upperBound) {
     return primes;
 }
 
-} // namespace prime
-} // namespace codebook
+}  // namespace prime
+}  // namespace codebook
 
 #endif

@@ -1,7 +1,6 @@
 #include <vector>
 
 #include "catch2/catch.hpp"
-
 #include "codebook/prime.hpp"
 
 TEST_CASE("prime generation") {
