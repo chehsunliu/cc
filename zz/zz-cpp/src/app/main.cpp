@@ -120,14 +120,14 @@ private:
 
 typedef codebook::modulo::ModuloInt<998244353> mint;
 
-mint combination(mint n, mint x) {
+mint combination(int n, int x) {
     mint numerator = 1;
-    for (mint i = 0; i < x; i++) {
+    for (int i = 0; i < x; i++) {
         numerator *= (n - i);
     }
 
     mint denominator = 1;
-    for (mint i = 1; i <= x; i++) {
+    for (int i = 1; i <= x; i++) {
         denominator *= i;
     }
 
