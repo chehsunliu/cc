@@ -2,9 +2,9 @@
 #include <string>
 
 #include "catch2/catch.hpp"
-#include "snippet/modulo.hpp"
+#include "codebook/modulo.hpp"
 
-using namespace snippet::modulo;
+using namespace codebook::modulo;
 
 typedef ModuloInt<7> mint7;
 typedef ModuloInt<1000000007> mint;

@@ -23,13 +23,13 @@ This project is managed by CMake with the following structure:
     │   └── src
     │       ├── appless_tests.cpp
     │       └── catch2_runner.cpp
-    └── snippet
+    └── codebook
         ├── CMakeLists.txt
         ├── include
-        │   └── snippet
+        │   └── codebook
         │       ├── io.hpp
         │       ├── prime.hpp
-        │       └── snippet.hpp
+        │       └── codebook.hpp
         └── src
             ├── catch2_runner.cpp
             ├── io_tests.cpp

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-//#include "snippet/snippet.hpp"
+//#include "codebook/codebook.hpp"
 
 typedef long long cc_int;
 

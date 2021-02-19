@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 
-namespace snippet {
+namespace codebook {
 namespace prime {
 
 std::vector<bool> constructSoETable(const int upperBound) {
@@ -59,6 +59,6 @@ std::set<int> createPrimeSet(const int upperBound) {
 }
 
 } // namespace prime
-} // namespace snippet
+} // namespace codebook
 
 #endif

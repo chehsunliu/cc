@@ -12,12 +12,12 @@ init:
 .PHONY: build
 build:
 	@echo "> Build"
-	@make -C $(BUILD_DIR)
+	@make -j 4 -C $(BUILD_DIR)
 
 .PHONY: test
 test: build
 	@echo "> Run the tests"
-	@make -C $(BUILD_DIR) test
+	@make -j 4 -C $(BUILD_DIR) test
 
 .PHONY: fmt
 fmt:

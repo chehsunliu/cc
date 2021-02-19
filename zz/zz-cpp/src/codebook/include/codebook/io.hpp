@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-namespace snippet {
+namespace codebook {
 namespace io {
 
 template <class T> void print_vector(const std::vector<T *> &vec, int n, bool reverse = false) {
@@ -37,6 +37,6 @@ template <class T> void print_vector(const std::vector<T> &vec) { print_vector(v
 template <class T> void print_vector(const std::vector<T> &vec, int n) { print_vector(vec, n); }
 
 } // namespace io
-} // namespace snippet
+} // namespace codebook
 
 #endif // WB_CPP_IO_HPP

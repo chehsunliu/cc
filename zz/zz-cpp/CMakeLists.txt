@@ -11,5 +11,5 @@ enable_testing()
 
 add_subdirectory(src/app)
 add_subdirectory(src/appless)
-add_subdirectory(src/snippet)
+add_subdirectory(src/codebook)
 add_subdirectory(src/3rd_party/catch2)

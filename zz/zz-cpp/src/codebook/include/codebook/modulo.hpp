@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-namespace snippet {
+namespace codebook {
 namespace modulo {
 
 template <int64_t Modulus>
@@ -104,6 +104,6 @@ private:
 };
 
 }  // namespace modulo
-}  // namespace snippet
+}  // namespace codebook
 
 #endif
