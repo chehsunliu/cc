@@ -120,18 +120,20 @@ private:
 
 typedef codebook::modulo::ModuloInt<998244353> mint;
 
+#define BUFFER_SIZE 200001
+mint factorial[BUFFER_SIZE];
+
+void computeFactorial() {
+    factorial[0] = 1;
+    factorial[1] = 1;
+
+    for (int i = 2; i < BUFFER_SIZE; i++) {
+        factorial[i] = factorial[i - 1] * i;
+    }
+}
+
 mint combination(int n, int x) {
-    mint numerator = 1;
-    for (int i = 0; i < x; i++) {
-        numerator *= (n - i);
-    }
-
-    mint denominator = 1;
-    for (int i = 1; i <= x; i++) {
-        denominator *= i;
-    }
-
-    return numerator / denominator;
+    return factorial[n] / (factorial[n - x] * factorial[x]);
 }
 
 std::vector<mint> setup(int array[], const int &n) {
@@ -182,11 +184,12 @@ int main() {
     int n;
     std::cin >> n;
 
-    int array[200000];
+    int array[BUFFER_SIZE];
     for (int i = 0; i < n; i++) {
         std::cin >> array[i];
     }
 
+    computeFactorial();
     auto ms = setup(array, n);
 
     int q;
