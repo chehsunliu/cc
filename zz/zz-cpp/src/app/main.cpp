@@ -121,9 +121,11 @@ private:
 typedef codebook::modulo::ModuloInt<998244353> mint;
 
 #define BUFFER_SIZE 200001
+#define BITS 32
+
 mint factorial[BUFFER_SIZE];
 
-void computeFactorial() {
+void preCompute() {
     factorial[0] = 1;
     factorial[1] = 1;
 
@@ -137,10 +139,10 @@ mint combination(int n, int x) {
 }
 
 std::vector<mint> setup(int array[], const int &n) {
-    std::vector<int> n0(32, 0);
-    std::vector<int> n1(32, 0);
+    std::vector<int> n0(BITS, 0);
+    std::vector<int> n1(BITS, 0);
 
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < BITS; i++) {
         for (int j = 0; j < n; j++) {
             if (array[j] % 2 == 1) {
                 n1[i]++;
@@ -155,13 +157,13 @@ std::vector<mint> setup(int array[], const int &n) {
     std::vector<mint> ms(n, 0);
     for (int m = 1; m <= n; m++) {
         mint s = 0;
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < BITS; i++) {
             for (int j = 1; j <= n1[i]; j += 2) {
                 if (j > m || m - j > n0[i]) {
                     continue;
                 }
 
-                s += combination(n1[i], j) * combination(n0[i], m - j) * mint(2).power(i);
+                s += combination(n1[i], j) * combination(n0[i], m - j) * (1 << i);
             }
         }
         ms[m - 1] = s;
@@ -189,7 +191,7 @@ int main() {
         std::cin >> array[i];
     }
 
-    computeFactorial();
+    preCompute();
     auto ms = setup(array, n);
 
     int q;
