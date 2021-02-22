@@ -1,179 +1,38 @@
 #include <algorithm>
 #include <iostream>
-#include <vector>
+#include <random>
 
 //#include "codebook/codebook.hpp"
 
-#ifndef __CODEBOOK_MODULO_H__
-#define __CODEBOOK_MODULO_H__
-
-namespace codebook {
-namespace modulo {
-
-template <int64_t Modulus>
-class ModuloInt {
-    using u32 = uint32_t;
-    using i64 = int64_t;
-
-public:
-    ModuloInt() : value(0) {}
-    ModuloInt(const i64 &v) : value(v) {
-        value = value >= 0 ? value : value + Modulus * ((-value) / Modulus + 1);
-        value %= Modulus;
+void solveRecursively(std::string &s, int left, int right, std::mt19937 &mt) {
+    if (left >= right) {
+        return;
     }
 
-    bool operator==(const ModuloInt &rhs) const { return this->value == rhs.value; }
-    bool operator!=(const ModuloInt &rhs) const { return !(*this == rhs); }
-    bool operator<(const ModuloInt &rhs) const { return this->value < rhs.value; }
-    bool operator>(const ModuloInt &rhs) const { return *this != rhs && !(*this < rhs); }
-    bool operator<=(const ModuloInt &rhs) const { return !(*this > rhs); }
-    bool operator>=(const ModuloInt &rhs) const { return !(*this < rhs); }
+    int l = left;
+    int r = right;
 
-    ModuloInt operator+(const ModuloInt &rhs) const { return ModuloInt(*this) += rhs; }
-    ModuloInt operator-(const ModuloInt &rhs) const { return ModuloInt(*this) -= rhs; }
-    ModuloInt operator*(const ModuloInt &rhs) const { return ModuloInt(*this) *= rhs; }
-    ModuloInt operator/(const ModuloInt &rhs) const { return ModuloInt(*this) /= rhs; }
+    std::uniform_int_distribution<int> distribution(l, r);
+    int m = distribution(mt);
 
-    ModuloInt &operator++() { return *this += 1; }
-    ModuloInt operator++(int) {
-        ModuloInt tmp = *this;
-        ++(*this);
-        return tmp;
-    }
-    ModuloInt &operator--() { return *this -= 1; }
-    ModuloInt operator--(int) {
-        ModuloInt tmp = *this;
-        --(*this);
-        return tmp;
-    }
+    char cmpResult;
 
-    ModuloInt &operator=(const ModuloInt &rhs) {
-        this->value = rhs.value;
-        return *this;
-    }
-    ModuloInt &operator+=(const ModuloInt &rhs) {
-        this->value = (this->value + rhs.value) % Modulus;
-        return *this;
-    }
-    ModuloInt &operator-=(const ModuloInt &rhs) {
-        this->value = (this->value + Modulus - rhs.value) % Modulus;
-        return *this;
-    }
-    ModuloInt &operator*=(const ModuloInt &rhs) {
-        this->value = (this->value * rhs.value) % Modulus;
-        return *this;
-    }
-    ModuloInt &operator/=(const ModuloInt &rhs) {
-        ModuloInt tmp = (*this) * rhs.inverse();
-        this->value = tmp.value;
-        return *this;
-    }
+    std::swap(s[m], s[l]);
+    while (l < r) {
+        std::cout << "? " << s[l] << " " << s[l + 1] << std::endl;
+        std::cin >> cmpResult;
 
-    ModuloInt power(u32 n) const {
-        if (n == 0) {
-            return 1;
-        }
-
-        ModuloInt result = this->value;
-        u32 currentExp = 1;
-
-        while (currentExp * 2 <= n) {
-            result *= result;
-            currentExp *= 2;
-        }
-
-        return result * power(n - currentExp);
-    }
-
-    ModuloInt inverse() const { return this->power(Modulus - 2); }
-
-    friend std::istream &operator>>(std::istream &is, ModuloInt &number) {
-        i64 tmp;
-        is >> tmp;
-        number.value = tmp % Modulus;
-        return is;
-    }
-    friend std::ostream &operator<<(std::ostream &os, const ModuloInt &number) {
-        os << number.value;
-        return os;
-    }
-
-private:
-    i64 value;
-
-    constexpr static bool modulusIsPrime() {
-        for (i64 i = 2; i * i <= Modulus; i++) {
-            if (Modulus % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    static_assert(modulusIsPrime(), "Modulus must be a prime.");
-};
-
-}  // namespace modulo
-}  // namespace codebook
-
-#endif
-
-typedef codebook::modulo::ModuloInt<998244353> mint;
-
-#define BUFFER_SIZE 200001
-#define BITS 32
-
-mint factorial[BUFFER_SIZE];
-
-void preCompute() {
-    factorial[0] = 1;
-    factorial[1] = 1;
-
-    for (int i = 2; i < BUFFER_SIZE; i++) {
-        factorial[i] = factorial[i - 1] * i;
-    }
-}
-
-mint combination(int n, int x) {
-    return factorial[n] / (factorial[n - x] * factorial[x]);
-}
-
-std::vector<mint> setup(int array[], const int &n) {
-    std::vector<int> n0(BITS, 0);
-    std::vector<int> n1(BITS, 0);
-
-    for (int i = 0; i < BITS; i++) {
-        for (int j = 0; j < n; j++) {
-            if (array[j] % 2 == 1) {
-                n1[i]++;
-            } else {
-                n0[i]++;
-            }
-
-            array[j] /= 2;
+        if (cmpResult == '>') {
+            std::swap(s[l], s[l + 1]);
+            l++;
+        } else {
+            std::swap(s[l + 1], s[r]);
+            r--;
         }
     }
 
-    std::vector<mint> ms(n, 0);
-    for (int m = 1; m <= n; m++) {
-        mint s = 0;
-        for (int i = 0; i < BITS; i++) {
-            for (int j = 1; j <= n1[i]; j += 2) {
-                if (j > m || m - j > n0[i]) {
-                    continue;
-                }
-
-                s += combination(n1[i], j) * combination(n0[i], m - j) * (1 << i);
-            }
-        }
-        ms[m - 1] = s;
-    }
-
-    for (int i = 1; i < ms.size(); i++) {
-        ms[i] += ms[i - 1];
-    }
-
-    return ms;
+    solveRecursively(s, left, l - 1, mt);
+    solveRecursively(s, l + 1, right, mt);
 }
 
 // 10^10 = (10^3)^3*10 = 2^30 * 10
@@ -183,25 +42,23 @@ int main() {
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
 
-    int n;
-    std::cin >> n;
+    std::random_device randomDevice;
+    std::mt19937 mt(randomDevice());
 
-    int array[BUFFER_SIZE];
+    int n, q;
+    std::cin >> n >> q;
+
+    std::string s(n, 'A');
     for (int i = 0; i < n; i++) {
-        std::cin >> array[i];
+        s[i] = 'A' + i;
     }
 
-    preCompute();
-    auto ms = setup(array, n);
+    solveRecursively(s, 0, n - 1, mt);
 
-    int q;
-    std::cin >> q;
-
-    for (int i = 0; i < q; i++) {
-        int m;
-        std::cin >> m;
-        std::cout << ms[m - 1] << "\n";
-    }
+    std::cout << "! " << s << "\n";
 
     return 0;
 }
+
+// A B C D E
+// 1 2 5 4 3
